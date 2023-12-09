@@ -1,6 +1,6 @@
 import cron from 'node-cron';
 import { logger } from '../config'
-import { registrationsServices } from '../services';
+import { registrationsService } from '../services';
 import { registrationsConstants } from '../constants';
 import { fetchPreviousFormatedDay } from '../utils';
 
@@ -15,7 +15,7 @@ const filterRegistrartionsWithModel = async(registrations) => {
     const { models } = registrationsConstants;
     let newRegistrations = [];
     registrations.forEach(registration => {
-        const modelFound = models.indexOf(registration.model) > 0;
+        const modelFound = models.includes(registration.model);
         if(modelFound){
             newRegistrations.push(registration.nNumber);
         }
@@ -28,14 +28,15 @@ const fetchRegistrations = async () => {
     const previousDate = await fetchPreviousFormatedDay(2);
     let allRegistrations = [];
     let dataEnded = false;
-    let lastPage = await registrationsServices.fetchLastPageNumber();
+    let lastPage = await registrationsService.fetchLastPageNumber();
     logger.info({
         event: 'Scheduler: Fetch Last Page',
+        previousDate,
         lastPage
     });
     let page = lastPage;
     while(!dataEnded){
-        const registrations = await registrationsServices.fetchRegistrations(page);
+        const registrations = await registrationsService.fetchRegistrations(page);
         page = page - 1;
         dataEnded = !!registrations.find(registration => registration.certIssueDate === previousDate);
         allRegistrations = [...allRegistrations, ...registrations]
@@ -66,8 +67,8 @@ const job = async () => {
     });
     if(registrations.length > 0){
         registrations.forEach(async(registration) => {
-            const record = await registrationsServices.fetchRegistrationRecord(registration);
-            const response = await registrationsServices.createRegistration(record);
+            const record = await registrationsService.fetchRegistrationRecord(registration);
+            const response = await registrationsService.createRegistration(record);
             logger.info(response);
         });
     }else{
@@ -76,5 +77,4 @@ const job = async () => {
         });
     }
 }
-
 cron.schedule(interval, job);

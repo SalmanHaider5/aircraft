@@ -1,1 +1,2 @@
 import './registrationsScheduler';
+import './accidentsScheduler';

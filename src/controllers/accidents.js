@@ -1,10 +1,10 @@
 import { logger } from '../config';
-import { registrationsService } from "../services";
+import { accidentsService } from "../services";
 
-export const getRegistrations = async (req, res) => {
+export const getAccidents = async (req, res) => {
     const records = req.query.records;
     const page = req.query.page;
-    const result = await registrationsService.fetchRegistrationsFromDB(records, page);
+    const result = await accidentsService.fetchAccidentsFromDB(records, page);
     logger.info({
         event: 'Controller: Records from DB',
         result

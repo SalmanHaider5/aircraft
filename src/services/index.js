@@ -1,5 +1,7 @@
-import * as registrationsServices from './registrations';
+import * as registrationsService from './registrations';
+import * as accidentsService from './accidents';
 
 export {
-    registrationsServices
+    registrationsService,
+    accidentsService
 };
