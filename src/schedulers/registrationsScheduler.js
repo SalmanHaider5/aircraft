@@ -7,7 +7,7 @@ import { fetchPreviousFormatedDay } from '../utils';
 const interval = registrationsConstants.scheduler.interval;
 
 const filterRegistrartionsWithDate = async (registrations) => {
-    const lastDate = fetchPreviousFormatedDay(1);
+    const lastDate = await fetchPreviousFormatedDay(1);
     return registrations.filter(registration => registration.certIssueDate === lastDate);
 }
 
@@ -25,7 +25,7 @@ const filterRegistrartionsWithModel = async(registrations) => {
 
 
 const fetchRegistrations = async () => {
-    const previousDate = fetchPreviousFormatedDay(2);
+    const previousDate = await fetchPreviousFormatedDay(2);
     let allRegistrations = [];
     let dataEnded = false;
     let lastPage = await registrationsServices.fetchLastPageNumber();
@@ -68,7 +68,7 @@ const job = async () => {
         registrations.forEach(async(registration) => {
             const record = await registrationsServices.fetchRegistrationRecord(registration);
             const response = await registrationsServices.createRegistration(record);
-            logger.info('Scheduler: Record Added', response);
+            logger.info(response);
         });
     }else{
         logger.info({

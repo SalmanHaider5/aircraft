@@ -8,11 +8,11 @@ const fetchHtmlContent = async (url, options) => {
     return content;
 }
 
-const fetchCurrentFormatedDay = async() => {
+const fetchCurrentFormatedDay = async () => {
     return moment().format('L').toString();
 }
 
-const fetchPreviousFormatedDay = async(days) => {
+const fetchPreviousFormatedDay = async (days) => {
     return moment().subtract(days, 'days').format('L').toString();
 }
 

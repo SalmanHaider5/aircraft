@@ -61,7 +61,7 @@ export const fetchLastPageNumber = async () => {
         logger.info({
             event: 'Service: Request for Pagination to Check Page',
             data: {
-                url,
+                url: home_url,
                 options
             }
         });
