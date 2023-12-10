@@ -1,2 +1,3 @@
-import './registrationsScheduler';
 import './accidentsScheduler';
+import './registrationsScheduler';
+import './companyStocksScheduler';
