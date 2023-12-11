@@ -2,6 +2,7 @@ import moment from 'moment';
 import * as registrationParser from './registrations'
 import * as accidentsParser from './accidents'
 import * as companyStocksParser from './companyStocks';
+import * as newsParser from './news';
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
@@ -28,6 +29,7 @@ const fetchPreviousFormatedDay = async (days) => {
 export {
     registrationParser,
     accidentsParser,
+    newsParser,
     companyStocksParser,
     fetchJsonData,
     fetchCurrentFormatedDay,

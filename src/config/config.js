@@ -7,6 +7,9 @@ const config = {
     rapidApi: {
         key: process.env.RAPID_API_KEY,
         host: process.env.RAPID_API_HOST
+    },
+    newsDataApi: {
+        key: process.env.NEWS_DATA_API_KEY
     }
 };
 

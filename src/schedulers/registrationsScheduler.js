@@ -77,4 +77,5 @@ const job = async () => {
         });
     }
 }
+
 cron.schedule(interval, job);

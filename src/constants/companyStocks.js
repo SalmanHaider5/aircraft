@@ -7,7 +7,7 @@ export const companyStocksConstants = {
     stonkApiUrl: 'https://realstonks.p.rapidapi.com/',
     stonkApiHeaders: {
         'X-RapidAPI-Key': `${config.rapidApi.key}`,
-        'X-RapidAPI-Host': `${config.rapidApi.host}`
+        'X-RapidAPI-Host': 'realstonks.p.rapidapi.com'
     },
     companies: [
         { key: "GD", name: "General Dynamic" },
