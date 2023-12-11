@@ -61,7 +61,7 @@ export const fetchCompanyStocks = async () => {
             headers: stonkApiHeaders
         };
         const companyStocks = [];
-        const urls = companies.map(company => stonkApiUrl + company);
+        const urls = companies.map(company => stonkApiUrl + company.key);
         for(let i in urls){
             const response = await fetchJsonData(urls[i], options);
             const data = companyStocksParser.getCompanyStockParsedData(response, companies[i])

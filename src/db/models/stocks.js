@@ -1,7 +1,12 @@
 import mongoose from 'mongoose';
 
 const stocks = new mongoose.Schema({
-    company: {
+    companyCode: {
+        type: String,
+        require: true,
+        unique: true
+    },
+    companyName: {
         type: String,
         require: true,
         unique: true

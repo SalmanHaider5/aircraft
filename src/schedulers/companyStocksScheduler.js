@@ -21,5 +21,5 @@ const job = async () => {
         });
     }
 }
-
-cron.schedule(interval, job);
+job();
+// cron.schedule(interval, job);

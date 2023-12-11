@@ -10,16 +10,21 @@ export const companyStocksConstants = {
         'X-RapidAPI-Host': `${config.rapidApi.host}`
     },
     companies: [
-        "GD",
-        "TXT",
-        "BDRAF",
-        "ERF",
-        "DUAVF",
-        "UP",
-        "EADSF",
-        "BA",
-        "BP",
-        "NTOIF",
-        "SHEL"
+        { key: "GD", name: "General Dynamic" },
+        { key: "TXT", name: "Textron" },
+        { key: "BDRAF", name: "Bombardier" },
+        { key: "ERF", name: "Embraer" },
+        { key: "DUAVF", name: "Dassault Aviation" },
+        { key: "UP", name: "Wheels Up" },
+        { key: "EADSF", name: "Airbus" },
+        { key: "BA", name: "Boeing" },
+        { key: "BP", name: "BP PLC" },
+        { key: "NTOIF", name: "Neste OYJ" },
+        { key: "SHEL", name: "Shell PLC" },
+        { key: "HON", name: "Honeywell " },
+        { key: "GE", name: "General Electric" },
+        { key: "RYCEF", name: "Rolls-Royce" },
+        { key: "WMB", name: "Williams International" },
+        { key: "COL", name: "Rockwell Collins" }
     ]
 };
