@@ -7,7 +7,7 @@ const interval = accidentsConstants.scheduler.interval;
 
 const job = async () => {
     logger.info('Scheduler Started');
-    const companyStocks = await companyStocksService.fetchCompanyStocks();
+    const companyStocks = await companyStocksService.fetchCompanyStocks() || [];
     logger.info({
         event: 'Scheduler: Fetch company stocks',
         companyStocks
