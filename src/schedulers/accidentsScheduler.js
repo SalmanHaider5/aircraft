@@ -18,10 +18,8 @@ const job = async () => {
         accidents
     });
     if(accidents.length > 0){
-        accidents.forEach(async(accident) => {
-            const response = await accidentsService.createAccident(accident);
-            logger.info(response);
-        });
+        const response = await accidentsService.createAccident(accidents) || [];
+        logger.info(response);
     }else{
         logger.info({
             event: 'Scheduler: No new accidents found. :-)'

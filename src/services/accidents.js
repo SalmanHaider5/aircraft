@@ -9,7 +9,7 @@ export const createAccident = async (data) => {
             event: 'Service: New Accident',
             data
         });
-        const accident = await Accidents.create(data);
+        const accident = await Accidents.insertMany(data, { ordered: false });
         logger.info({
             event: 'Service: Record added in Mongo DB',
             accident

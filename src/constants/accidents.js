@@ -1,6 +1,6 @@
 export const accidentsConstants = {
     scheduler: {
-        interval: '0 0 1 * *'
+        interval: '0 11 1 * *'
     },
     sessionId: 480529,
     mainUrl: "https://data.ntsb.gov/carol-main-public/api/Query/Main",
