@@ -23,7 +23,6 @@ export const readExcel = async () => {
                 error: 'There is no file or multiple files. Please keep just 1 *.xslx file.'
             }
         }
-        
         const result = xcelToJson({
             sourceFile: `./${excelFiles[0]}`,
             columnToKey: columns
