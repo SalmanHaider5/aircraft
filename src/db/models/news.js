@@ -7,6 +7,7 @@ const news = new mongoose.Schema({
     },
     title: {
         type: String,
+        unique: true,
         maxLength: 1024
     },
     content: {

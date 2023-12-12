@@ -2,7 +2,7 @@ import { config } from '../config';
 
 export const newsConstants = {
     scheduler: {
-        interval: '0 0 1 * *'
+        interval: '0 10,14,18 * * *'
     },
     newsDataUrl: 'https://newsomaticapi.p.rapidapi.com/top',
     requestHeaders: {
