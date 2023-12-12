@@ -16,11 +16,11 @@ export const readExcel = async () => {
                 return file;
             }
         }).filter(file => !!file);
-        if(excelFiles.length > 1){
+        if(excelFiles.length > 1 || excelFiles.length === 0){
             return {
                 sccess: false,
                 statusCode: 422,
-                error: 'Multiple excel files are there, please remove others.'
+                error: 'There is no file or multiple files. Please keep just 1 *.xslx file.'
             }
         }
         const result = xcelToJson({
