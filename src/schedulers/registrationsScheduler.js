@@ -2,13 +2,12 @@ import cron from 'node-cron';
 import { logger } from '../config'
 import { registrationsService } from '../services';
 import { registrationsConstants } from '../constants';
-import { fetchPreviousFormatedDay } from '../utils';
+import { registrationParser } from '../utils';
 
 const interval = registrationsConstants.scheduler.interval;
 
-const filterRegistrartionsWithDate = async (registrations) => {
-    const lastDate = await fetchPreviousFormatedDay(1);
-    return registrations.filter(registration => registration.certIssueDate === lastDate);
+const filterRegistrartionsWithDate = async (registrations, previousDate) => {;
+    return registrations.filter(registration => registration.certIssueDate !== previousDate);
 }
 
 const filterRegistrartionsWithModel = async(registrations) => {
@@ -25,7 +24,6 @@ const filterRegistrartionsWithModel = async(registrations) => {
 
 
 const fetchRegistrations = async () => {
-    const previousDate = await fetchPreviousFormatedDay(2);
     let allRegistrations = [];
     let dataEnded = false;
     let lastPage = await registrationsService.fetchLastPageNumber();
@@ -35,8 +33,13 @@ const fetchRegistrations = async () => {
         lastPage
     });
     let page = lastPage;
+    let previousDate = "";
     while(!dataEnded){
         const registrations = await registrationsService.fetchRegistrations(page);
+        if(page === lastPage){
+            const lastRecord = registrations[registrations.length - 1].certIssueDate;
+            previousDate = await registrationParser.fetchPreviousDayForRegistrations(lastRecord);
+        }
         page = page - 1;
         dataEnded = !!registrations.find(registration => registration.certIssueDate === previousDate);
         allRegistrations = [...allRegistrations, ...registrations]
@@ -45,7 +48,7 @@ const fetchRegistrations = async () => {
         event: 'Scheduler: Fetch All Registrations',
         allRegistrations
     });
-    const latestRegistrations =  await filterRegistrartionsWithDate(allRegistrations);
+    const latestRegistrations =  await filterRegistrartionsWithDate(allRegistrations, previousDate);
     logger.info({
         event: 'Scheduler: Filtered Registrations with Date',
         latestRegistrations
@@ -60,7 +63,7 @@ const fetchRegistrations = async () => {
 
 const job = async () => {
     logger.info('Scheduler Started');
-    const registrations = await fetchRegistrations();
+    const registrations = await fetchRegistrations() || [];
     logger.info({
         event: 'Scheduler: Fetch Registrations after all Filters',
         registrations

@@ -1,10 +1,15 @@
 import * as cheerio from 'cheerio';
+import moment from 'moment';
 import { registrationsConstants } from "../constants";
 
 export const parseLastPageNumber = async (str) => {
     const pages = str.split(" ");
     const lastPage = parseInt(pages[pages.length - 1].split(")")[0]);
     return lastPage;
+}
+
+export const fetchPreviousDayForRegistrations = async (date) =>{
+    return moment(date, 'L').subtract(1, 'days').format('L').toString();
 }
 
 export const parseAllRegistrations = async (htmlContent) =>{
