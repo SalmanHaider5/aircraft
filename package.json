@@ -4,7 +4,8 @@
   "description": "To collect FAA data",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js --exec babel-node --presets es2015,stage-0",
+    "build": "babel index.js -d dist",
+    "start": "npm run build && node dist/index.js",
     "start:dev": "nodemon src/index.js --exec babel-node --presets es2015,stage-0"
   },
   "repository": {
