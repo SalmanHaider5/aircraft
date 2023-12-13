@@ -1,11 +1,12 @@
 import moment from 'moment';
+import fetch from 'node-fetch';
 import * as registrationParser from './registrations'
 import * as accidentsParser from './accidents'
 import * as companyStocksParser from './companyStocks';
 import * as newsParser from './news';
 import * as airportsParser from './airports';
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+// const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const fetchHtmlContent = async (url, options) => {
     const htmlContent = await fetch(url, options);
