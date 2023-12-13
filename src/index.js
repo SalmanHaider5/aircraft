@@ -7,9 +7,7 @@ import './schedulers';
 
 const app = express();
 app.use(cors());
-app.get('/', (req, res) => {
-    res.send('Welcome to Healthcheck System');
-})
+
 app.use('/aircraft', router);
 
 const port = config.port;
