@@ -29,7 +29,6 @@ const fetchRegistrations = async () => {
     let lastPage = await registrationsService.fetchLastPageNumber();
     logger.info({
         event: 'Scheduler: Fetch Last Page',
-        previousDate,
         lastPage
     });
     let page = lastPage;
