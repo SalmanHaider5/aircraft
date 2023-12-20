@@ -236,7 +236,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cors */ \"cors\");\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(cors__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config */ \"./src/config/index.js\");\n/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes */ \"./src/routes/index.js\");\n/* harmony import */ var _db__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./db */ \"./src/db/index.js\");\n/* harmony import */ var _schedulers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./schedulers */ \"./src/schedulers/index.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\r\napp.use(cors__WEBPACK_IMPORTED_MODULE_1___default()());\r\n\r\napp.use('/aircraft', _routes__WEBPACK_IMPORTED_MODULE_3__[\"default\"]);\r\n\r\nconst port = _config__WEBPACK_IMPORTED_MODULE_2__.config.port;\r\n\r\napp.listen(port, () => {\r\n    _config__WEBPACK_IMPORTED_MODULE_2__.logger.info(`App is running on port ${port}`);\r\n});\r\n\n\n//# sourceURL=webpack://milestone1/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! http */ \"http\");\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cors */ \"cors\");\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(cors__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config */ \"./src/config/index.js\");\n/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes */ \"./src/routes/index.js\");\n/* harmony import */ var _db__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./db */ \"./src/db/index.js\");\n/* harmony import */ var _schedulers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./schedulers */ \"./src/schedulers/index.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\r\napp.use(cors__WEBPACK_IMPORTED_MODULE_2___default()());\r\n\r\n// To keep Heroku app alive\r\nsetInterval(() => {\r\n    http__WEBPACK_IMPORTED_MODULE_1___default().get(\"https://healthcheck-backend-888c77da0ba5.herokuapp.com/\");\r\n    console.log(\"App is alive!\");\r\n  }, 20 * 60 * 1000);\r\n\r\napp.use('/aircraft', _routes__WEBPACK_IMPORTED_MODULE_4__[\"default\"]);\r\napp.get('/', (req, res) => {\r\n    res.send('Welcome to Healthcheck App!');\r\n});\r\n\r\nconst port = _config__WEBPACK_IMPORTED_MODULE_3__.config.port;\r\n\r\napp.listen(port, () => {\r\n    _config__WEBPACK_IMPORTED_MODULE_3__.logger.info(`App is running on port ${port}`);\r\n});\r\n\n\n//# sourceURL=webpack://milestone1/./src/index.js?");
 
 /***/ }),
 
@@ -577,6 +577,16 @@ module.exports = require("node-fetch");
 /***/ ((module) => {
 
 module.exports = require("winston");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+module.exports = require("http");
 
 /***/ })
 
