@@ -8,7 +8,7 @@ import { accidentsParser } from '../utils';
 const interval = accidentsConstants.scheduler.interval;
 
 const job = async () => {
-    logger.info('Scheduler Started');
+    logger.info('Accidents: Scheduler Started');
     const { sessionId } = accidentsConstants;
     const startDate = accidentsParser.getFirstDateOfLastMonth();
     const lastDate = accidentsParser.getLastDateOfLastMonth();

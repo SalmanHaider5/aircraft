@@ -11,7 +11,7 @@ app.use(cors());
 
 // To keep Heroku app alive
 setInterval(() => {
-    http.get("https://healthcheck-backend-888c77da0ba5.herokuapp.com/");
+    http.get("http://healthcheck-backend-888c77da0ba5.herokuapp.com/");
     console.log("App is alive!");
   }, 20 * 60 * 1000);
 

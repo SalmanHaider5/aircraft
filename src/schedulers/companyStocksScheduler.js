@@ -6,7 +6,7 @@ import { accidentsConstants } from '../constants';
 const interval = accidentsConstants.scheduler.interval;
 
 const job = async () => {
-    logger.info('Scheduler Started');
+    logger.info('Company Stocks: Scheduler Started');
     const companyStocks = await companyStocksService.fetchCompanyStocks() || [];
     logger.info({
         event: 'Scheduler: Fetch company stocks',

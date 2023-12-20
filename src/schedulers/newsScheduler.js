@@ -6,7 +6,7 @@ import { newsConstants } from '../constants';
 const interval = newsConstants.scheduler.interval;
 
 const job = async () => {
-    logger.info('News Scheduler Started');
+    logger.info('News: Scheduler Started');
     const news = await newsService.fetchNews() || [];
     logger.info({
         event: 'Scheduler: Fetch News',
