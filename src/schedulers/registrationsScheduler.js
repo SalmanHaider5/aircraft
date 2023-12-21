@@ -63,6 +63,7 @@ const fetchRegistrations = async () => {
 const job = async () => {
     logger.info('Registrations: Scheduler Started');
     const registrations = await fetchRegistrations() || [];
+    console.log('Registrations =>', registrations);
     logger.info({
         event: 'Scheduler: Fetch Registrations after all Filters',
         registrations
@@ -79,5 +80,5 @@ const job = async () => {
         });
     }
 }
-
-cron.schedule(interval, job);
+job();
+// cron.schedule(interval, job);
