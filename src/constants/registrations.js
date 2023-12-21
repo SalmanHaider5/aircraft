@@ -1,6 +1,6 @@
 export const registrationsConstants = {
     scheduler: {
-        interval: '0 8 * * *'
+        interval: '*/10 * * * *'
     },
     home_url: 'https://registry.faa.gov/aircraftinquiry/Search/RecentRegistrationResult',
     registration_url: 'https://registry.faa.gov/aircraftinquiry/Search/NNumberResult?NNumberTxt=',

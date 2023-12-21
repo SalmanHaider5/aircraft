@@ -1,4 +1,4 @@
-import './newsScheduler';
-import './accidentsScheduler';
+// import './newsScheduler';
+// import './accidentsScheduler';
 import './registrationsScheduler';
-import './companyStocksScheduler';
+// import './companyStocksScheduler';
