@@ -11,7 +11,7 @@ const job = async () => {
     const { sessionId } = accidentsConstants;
     const startDate = accidentsParser.getFirstDateOfLastMonth();
     const lastDate = accidentsParser.getLastDateOfLastMonth();
-    const accidents = await accidentsService.fetchAccidents(sessionId, startDate, lastDate);
+    const accidents = await accidentsService.fetchAccidents(sessionId, startDate, lastDate) || [];
     logger.info({
         event: 'Scheduler: Fetch accidents after all Filters',
         accidents

@@ -1,3 +1,5 @@
+import path from 'path';
+
 export const airportsConstants = {
     columns: {
         A: 'icao',
@@ -12,5 +14,6 @@ export const airportsConstants = {
         J: 'fbo',
         K: 'latitude',
         L: 'longitude'
-    }
+    },
+    fileUploadPath: path.join(__dirname, '../../public/airports')
 };

@@ -13,10 +13,13 @@ export const getAirports = async (req, res) => {
 };
 
 export const createAirportsByFile = async (req, res) => {
-    const result = await airportsService.readExcel();
-    logger.info({
-        event: 'Controller: Creating new records',
-        result
-    })
-    res.status(result.statusCode).json(result);
+    if(req.file){
+        const file = req.file.filename;
+        const result = await airportsService.readExcel(file);
+        logger.info({
+            event: 'Controller: Creating new records',
+            result
+        })
+        res.status(result.statusCode).json(result);
+    }
 }
