@@ -5,11 +5,11 @@ import { Airports } from '../db/models'
 import { airportsConstants } from '../constants';
 import { airportsParser } from '../utils';
 
-export const readExcel = async () => {
+export const readExcel = async (file) => {
     try{
         const { columns } = airportsConstants;
         const { formatAirportData } = airportsParser;
-        const files = fs.readdirSync('./');
+        const files = fs.readdirSync(airportsConstants.fileUploadPath);
         const excelFiles = files.map(file => {
             const fileNameArray = file.split(".");
             if(fileNameArray[fileNameArray.length - 1] === 'xlsx'){
@@ -24,7 +24,7 @@ export const readExcel = async () => {
             }
         }
         const result = xcelToJson({
-            sourceFile: `./${excelFiles[0]}`,
+            sourceFile: `${airportsConstants.fileUploadPath}/${excelFiles[0]}`,
             columnToKey: columns
         });
         if(result.Sheet1){
@@ -45,6 +45,9 @@ export const readExcel = async () => {
                 failed: invalidRecords.length,
                 failedRecords: invalidRecords
             };
+            fs.unlink(`${airportsConstants.fileUploadPath}/${excelFiles[0]}`, (err) => {
+                logger.info('File removed!');    
+            });
             logger.info({
                 event: 'Service: Records added in MongoDB',
                 data: obj

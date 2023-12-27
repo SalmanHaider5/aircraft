@@ -1,3 +1,5 @@
+import path from 'path';
+
 export const registrationsConstants = {
     scheduler: {
         interval: '*/10 * * * *'
@@ -248,5 +250,27 @@ export const registrationsConstants = {
         "MU-2B-26A",
         "MU-2B-35",
         "PC-24"
-    ]
+    ],
+    fileUploadPath: path.join(__dirname, '../../public/registrations'),
+    columns: {
+        A: 'regNumber',
+        C: 'serialNumber',
+        E: 'faaName',
+        F: 'cppName',
+        G: 'engineModel',
+        H: 'mfrYear',
+        I: 'typeRegistration',
+        J: 'registeredOwnerName',
+        K: 'registeredOwnerStreet',
+        M: 'registeredOwnerCity',
+        N: 'registeredOwnerState',
+        O: 'registeredOwnerZipCode',
+        Q: 'registeredOwnerCountry',
+        S: 'certificateIssueDate',
+        V: 'typeEngine',
+        W: 'status',
+        X: 'modelSCodebase16',
+        Y: 'fractionalOwner',
+        Z: 'awDate'
+    }
 };
