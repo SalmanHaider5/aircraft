@@ -9,9 +9,7 @@ import * as airportsParser from './airports';
 // const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const fetchHtmlContent = async (url, options) => {
-    console.log('Request');
     const response = await fetch(url, options);
-    console.log('Response =>', response);
     const content = await response.text();
     return content;
 }

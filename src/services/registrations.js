@@ -58,7 +58,6 @@ export const fetchLastPageNumber = async () => {
         const options = {
             headers: url_headers
         };
-        console.log("Invoked")
         logger.info({
             event: 'Service: Request for Pagination to Check Page',
             data: {
@@ -70,7 +69,6 @@ export const fetchLastPageNumber = async () => {
         const $ = cheerio.load(html);
         const pagesStr = $('.pagination2center p').text().trim();
         const pageNumber = await registrationParser.parseLastPageNumber(pagesStr);
-        console.log("Page Number =>", pageNumber);
         logger.info({
             event: 'Service: Last Page Number',
             pageNumber
