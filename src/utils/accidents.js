@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { accidentsConstants, registrationsConstants } from '../constants'
+import { accidentsConstants } from '../constants'
 
 export const getAccidentsRequestBody = async (sessionId, startingDate, endingDate) => {
     return {
@@ -104,7 +104,7 @@ const parseAccidentData =  (data) => {
 }
 
 export const getFilteredAccidents = data => {
-    const { models } = registrationsConstants;
+    const { models } = accidentsConstants;
     return data.Results.map( (accident) => {
         return parseAccidentData(accident.Fields);
     }).filter(accident => models.includes(accident.model));
