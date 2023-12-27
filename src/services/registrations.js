@@ -179,6 +179,9 @@ export const readExcel = async () => {
                 failed: invalidRecords.length,
                 failedRecords: invalidRecords
             };
+            fs.unlink(`${registrationsConstants.fileUploadPath}/${excelFiles[0]}`, (err) => {
+                logger.info('File removed!');    
+            });
             logger.info({
                 event: 'Service: Records added in MongoDB',
                 data: obj
