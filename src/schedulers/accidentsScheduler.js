@@ -1,5 +1,4 @@
 import cron from 'node-cron';
-import moment from 'moment';
 import { logger } from '../config'
 import { accidentsService } from '../services';
 import { accidentsConstants } from '../constants';

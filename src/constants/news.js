@@ -26,6 +26,10 @@ export const newsConstants = {
         "hondajet",
         "nextant",
         "pilatus pc-24",
-        "textron"
+        "textron",
+        "economy",
+        "finance",
+        "market",
+        "inflation"
     ]
 };
