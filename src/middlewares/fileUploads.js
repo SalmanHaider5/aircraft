@@ -1,5 +1,5 @@
 import multer from 'multer';
-import { airportsConstants } from '../constants';
+import { airportsConstants, registrationsConstants } from '../constants';
 
 const excelFile = file => {
     return file.mimetype.includes("excel") || file.mimetype.includes("spreadsheetml");
@@ -19,7 +19,21 @@ const airportStorage = multer.diskStorage({
     },
 });
 
+const registrationsStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, registrationsConstants.fileUploadPath);
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
+
 export const airportsUploadFile = multer({
     storage: airportStorage,
+    fileFilter: checkFileType
+});
+
+export const registrationsUploadFile = multer({
+    storage: registrationsStorage,
     fileFilter: checkFileType
 });
