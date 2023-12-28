@@ -1,9 +1,9 @@
 import cron from 'node-cron';
 import { logger } from '../config'
 import { companyStocksService } from '../services';
-import { accidentsConstants } from '../constants';
+import { companyStocksConstants } from '../constants';
 
-const interval = accidentsConstants.scheduler.interval;
+const interval = companyStocksConstants.scheduler.interval;
 
 const job = async () => {
     logger.info('Company Stocks: Scheduler Started');
