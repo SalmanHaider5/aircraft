@@ -15,5 +15,5 @@ export const airportsConstants = {
         K: 'latitude',
         L: 'longitude'
     },
-    fileUploadPath: path.join(__dirname, '../../public/airports')
+    fileUploadPath: '/'
 };
