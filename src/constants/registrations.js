@@ -1,7 +1,7 @@
 import path from 'path';
 
 export const registrationsConstants = {
-    fileUploadPath: '/',
+    fileUploadPath: '/app',
     columns: {
         A: 'regNumber',
         C: 'serialNumber',

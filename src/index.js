@@ -17,8 +17,9 @@ setInterval(() => {
 
 app.use('/aircraft', router);
 app.get('/', (req, res) => {
+    console.log("Current directory:", __dirname);
     res.send('Welcome to Healthcheck App!');
-});
+});Wait 
 
 const port = config.port;
 

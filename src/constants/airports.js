@@ -15,5 +15,5 @@ export const airportsConstants = {
         K: 'latitude',
         L: 'longitude'
     },
-    fileUploadPath: '/'
+    fileUploadPath: '/app'
 };
