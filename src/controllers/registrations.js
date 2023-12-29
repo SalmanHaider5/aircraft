@@ -1,4 +1,5 @@
 import { logger } from '../config';
+import { registrationsConstants } from '../constants';
 import { registrationsService } from "../services";
 
 export const getRegistrations = async (req, res) => {
@@ -25,7 +26,8 @@ export const createRegistationsByFile = async (req, res) => {
                 res.status(result.statusCode).json(result);
             }else{
                 res.status(400).json({
-                    response: 'Unable to upload the document, please try again.'
+                    response: 'Unable to upload the document, please try again. Please make sure valid format is uploaded.',
+                    sheetFormat: registrationsConstants.columns
                 });
             }
         }

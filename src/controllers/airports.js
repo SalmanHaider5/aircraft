@@ -1,4 +1,5 @@
 import { logger } from '../config';
+import { airportsConstants } from '../constants';
 import { airportsService } from "../services";
 
 export const getAirports = async (req, res) => {
@@ -25,7 +26,8 @@ export const createAirportsByFile = async (req, res) => {
                 res.status(result.statusCode).json(result);
             }else{
                 res.status(400).json({
-                    response: 'Unable to upload the document, please try again.'
+                    response: 'Unable to upload the document, please try again. Please make sure valid format is uploaded.',
+                    sheetFormat: airportsConstants.columns
                 });
             }
         }
