@@ -56,7 +56,8 @@ export const readExcel = async () => {
             sourceFile: `${registrationsConstants.fileUploadPath}/${excelFiles[0]}`,
             columnToKey: columns
         });
-        if(result.Sheet1){
+        let obj = {};
+        if(result && result.Sheet1){
             const data = result.Sheet1;
             data.shift();
             const validRecords = [], invalidRecords = [];
@@ -66,7 +67,7 @@ export const readExcel = async () => {
                 else invalidRecords.push(data[i]);
             }
             const response = await Registrations.insertMany(data, { ordered: false });
-            const obj = {
+            obj = {
                 success: true,
                 statusCode: 200,
                 totalRecords: data.length,
@@ -74,15 +75,22 @@ export const readExcel = async () => {
                 failed: invalidRecords.length,
                 failedRecords: invalidRecords
             };
-            fs.unlink(`${registrationsConstants.fileUploadPath}/${excelFiles[0]}`, (err) => {
-                logger.info('File removed!');    
-            });
-            logger.info({
-                event: 'Service: Records added in MongoDB',
-                data: obj
-            });
-            return obj;
+        }else{
+            obj = {
+                success: false,
+                statusCode: 400,
+                message: "Unable to upload data. Please upload file with valid format.",
+                format: airportsConstants.columns
+            };
         }
+        fs.unlink(`${registrationsConstants.fileUploadPath}/${excelFiles[0]}`, (err) => {
+            logger.info('File removed!');    
+        });
+        logger.info({
+            event: 'Service: Records added in MongoDB',
+            data: obj
+        });
+        return obj;
     }catch(err){
         logger.error(err);
     }
