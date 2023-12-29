@@ -45,7 +45,7 @@ const accidents = new mongoose.Schema({
     reportType: {
         type: String
     },
-    ReportDate: {
+    reportDate: {
         type: String
     }
 });

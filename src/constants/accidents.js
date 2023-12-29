@@ -22,7 +22,7 @@ export const accidentsConstants = {
         { key: "HasSafetyRec", dbKey: "hasSafetyRec" },
         { key: "Mode", dbKey: "mode" },
         { key: "ReportType", dbKey: "reportType" },
-        { key: "ReportDate", dbKey: "ReportDate" }
+        { key: "ReportDate", dbKey: "reportDate" }
     ],
     models: [
         "FALCON 10",

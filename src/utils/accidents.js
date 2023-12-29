@@ -98,7 +98,16 @@ const parseAccidentData =  (data) => {
     const { dataKeys } = accidentsConstants;
     const accident = {};
     dataKeys.forEach(element => {
-        accident[element.dbKey] = data.find(event => event.FieldName === element.key).Values[0] || "";
+        if(element.key === "ReportDate"){
+            const reportDate = data.find(event => event.FieldName === element.key).Values[0];
+            if(reportDate)
+                accident[element.dbKey] = moment(reportDate).format('L');
+            else
+                accident[element.dbKey] = "N/A"
+             
+        }else{
+            accident[element.dbKey] = data.find(event => event.FieldName === element.key).Values[0] || "";
+        }
     });
     return accident;
 }
