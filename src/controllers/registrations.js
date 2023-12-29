@@ -18,18 +18,11 @@ export const createRegistationsByFile = async (req, res) => {
         if(req.file){
             const file = req.file.filename;
             const result = await registrationsService.readExcel(file);
-            if(result){
-                logger.info({
-                    event: 'Controller: Creating new records',
-                    result
-                })
-                res.status(result.statusCode).json(result);
-            }else{
-                res.status(400).json({
-                    response: 'Unable to upload the document, please try again. Please make sure valid format is uploaded.',
-                    sheetFormat: registrationsConstants.columns
-                });
-            }
+            logger.info({
+                event: 'Controller: Creating new records',
+                result
+            })
+            res.status(result.statusCode).json(result);
         }
     }catch(err){
         logger.error(err);

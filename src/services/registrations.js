@@ -80,7 +80,7 @@ export const readExcel = async () => {
                 success: false,
                 statusCode: 400,
                 message: "Unable to upload data. Please upload file with valid format.",
-                format: airportsConstants.columns
+                format: registrationsConstants.columns
             };
         }
         fs.unlink(`${registrationsConstants.fileUploadPath}/${excelFiles[0]}`, (err) => {
