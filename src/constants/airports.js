@@ -11,7 +11,7 @@ export const airportsConstants = {
         G: 'runwayLength',
         H: 'surface',
         I: 'fuel',
-        J: 'fbo',
+        J: 'iata',
         K: 'latitude',
         L: 'longitude'
     },

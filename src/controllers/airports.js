@@ -13,13 +13,23 @@ export const getAirports = async (req, res) => {
 };
 
 export const createAirportsByFile = async (req, res) => {
-    if(req.file){
-        const file = req.file.filename;
-        const result = await airportsService.readExcel(file);
-        logger.info({
-            event: 'Controller: Creating new records',
-            result
-        })
-        res.status(result.statusCode).json(result);
+    try{
+        if(req.file){
+            const file = req.file.filename;
+            const result = await airportsService.readExcel(file);
+            if(result){
+                logger.info({
+                    event: 'Controller: Creating new records',
+                    result
+                })
+                res.status(result.statusCode).json(result);
+            }else{
+                res.status(400).json({
+                    response: 'Unable to upload the document, please try again.'
+                });
+            }
+        }
+    }catch(err){
+        logger.error(err);
     }
 }
