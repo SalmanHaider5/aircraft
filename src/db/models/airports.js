@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 const airports = new mongoose.Schema({
     icao: {
         type: String,
-        require: true,
-        unique: true
+        require: true
     },
     airportName: {
         type: String

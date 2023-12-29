@@ -37,7 +37,9 @@ export const readExcel = async (file) => {
                 if(!!record) validRecords.push(record);
                 else invalidRecords.push(data[i]);
             }
-            const response = await Airports.insertMany(validRecords, { ordered: false });
+            const response = await Airports.insertMany(validRecords, { ordered: false }).catch(err => {
+                logger.error(err);
+            });
             obj = {
                 success: true,
                 statusCode: 200,

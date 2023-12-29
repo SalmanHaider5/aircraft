@@ -3,13 +3,15 @@ import { News } from '../db/models';
 import { newsConstants } from '../constants'
 import { newsParser, fetchJsonData } from '../utils';
 
-export const createNews = async (data) => {
+export const createNews = async (data = []) => {
     try{
         logger.info({
             event: 'Service: New news',
             data
         });
-        const news = await News.insertMany(data, { ordered: false });
+        const news = await News.insertMany(data, { ordered: false }).catch(err => {
+            logger.error(err);
+        });
         logger.info({
             event: 'Service: Records added in Mongo DB',
             news

@@ -4,13 +4,15 @@ import { Stocks } from '../db/models';
 import { companyStocksConstants } from '../constants'
 import { fetchJsonData, companyStocksParser  } from '../utils';
 
-export const createCompanyStocks = async (data) => {
+export const createCompanyStocks = async (data = []) => {
     try{
         logger.info({
             event: 'Service: New Accident',
             data
         });
-        const companyStocks = await Stocks.insertMany(data);
+        const companyStocks = await Stocks.insertMany(data, { ordered: false }).catch(err => {
+            logger.error(err);
+        });
         logger.info({
             event: 'Service: Records added in Mongo DB',
             companyStocks

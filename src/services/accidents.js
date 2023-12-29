@@ -3,13 +3,15 @@ import { Accidents } from '../db/models';
 import { accidentsConstants } from '../constants'
 import { accidentsParser, fetchJsonData } from '../utils';
 
-export const createAccident = async (data) => {
+export const createAccident = async (data = []) => {
     try{
         logger.info({
             event: 'Service: New Accident',
             data
         });
-        const accident = await Accidents.insertMany(data, { ordered: false });
+        const accident = await Accidents.insertMany(data, { ordered: false }).catch(err => {
+            logger.error(err);
+        });
         logger.info({
             event: 'Service: Record added in Mongo DB',
             accident

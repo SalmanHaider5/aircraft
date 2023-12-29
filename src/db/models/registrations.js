@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 const registrations = new mongoose.Schema({
     regNumber: {
         type: String,
-        require: true,
-        unique: true
+        require: true
     },
     serialNumber: {
         type: String
