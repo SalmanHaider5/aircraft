@@ -25,4 +25,3 @@ const stocks = new mongoose.Schema({
 const Stocks = mongoose.model('Stocks', stocks);
 
 export default Stocks;
-
