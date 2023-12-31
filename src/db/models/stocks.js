@@ -19,7 +19,8 @@ const stocks = new mongoose.Schema({
         type: Number
     },
     date: {
-        type: String
+        type: String,
+        unique: true
     }
 });
 const Stocks = mongoose.model('Stocks', stocks);
