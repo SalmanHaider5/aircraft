@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 const accidents = new mongoose.Schema({
     ntsbNo: {
         type: String,
-        require: true,
-        unique: true
+        require: true
     },
     completionStatus: {
         type: String

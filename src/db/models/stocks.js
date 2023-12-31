@@ -3,13 +3,11 @@ import mongoose from 'mongoose';
 const stocks = new mongoose.Schema({
     companyCode: {
         type: String,
-        require: true,
-        unique: true
+        require: true
     },
     companyName: {
         type: String,
-        require: true,
-        unique: true
+        require: true
     },
     price: {
         type: Number
