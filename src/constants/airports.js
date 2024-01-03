@@ -12,8 +12,8 @@ export const airportsConstants = {
         H: 'surface',
         I: 'fuel',
         J: 'iata',
-        K: 'latitude',
-        L: 'longitude'
+        K: 'lat',
+        L: 'long'
     },
     fileUploadPath: '/app'
 };

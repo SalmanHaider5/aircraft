@@ -29,7 +29,7 @@ const airports = new mongoose.Schema({
     fuel: {
         type: String
     },
-    fbo: {
+    iata: {
         type: String
     },
     lat: {
