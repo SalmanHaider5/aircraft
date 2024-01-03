@@ -35,7 +35,7 @@ const airports = new mongoose.Schema({
     lat: {
         type: String
     },
-    lng: {
+    long: {
         type: String
     }
 });
