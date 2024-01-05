@@ -78,3 +78,19 @@ export const fetchCompanyStocks = async () => {
         logger.error(err);
     }
 }
+
+export const checkIfDataExists = async (date) => {
+    try{
+        const stocks = await Stocks.find({ date });
+        if(stocks.length > 0){
+            logger.info({
+                event: 'Service: Stocks from DB for Today',
+                stocks
+            });
+            return true;
+        }
+        return false;
+    }catch(err){
+        logger.error(err);
+    }
+}

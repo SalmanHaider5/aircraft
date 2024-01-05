@@ -2,7 +2,7 @@ import { config } from '../config'
 
 export const companyStocksConstants = {
     scheduler: {
-        interval: '0 15 * * *'
+        interval: '0 15,16,17,18 * * *'
     },
     stonkApiUrl: 'https://realstonks.p.rapidapi.com/',
     stonkApiHeaders: {
